@@ -1,3 +1,5 @@
-## E-Commerce Backend
+## Chery Cart
 
-This folder contains the Mock Backend created for E-Commerce App. It contains different API end-points and database configuration for building E-Commerce; so that you can focus on building Frontend.
+Cherry cart is an ecommerce platform.
+
+<b>Cherry Cart is under development</b>
