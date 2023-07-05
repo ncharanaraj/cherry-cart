@@ -12,9 +12,82 @@
 :root {
   --accent-color: #f8fafc;
   --primary-color: #ef4444;
-  --complimentory-color: ;
+  --secondary-color: #34d399;
   --sucess-color: #bbf7d0;
   --warning-color: #fef08a;
   --info-color: #a5f3fc;
   --error-color: #fecaca;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 2.12rem;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 1rem;
+}
+
+h5 {
+  font-size: 0.87rem;
+}
+
+h6 {
+  font-size: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 0.87rem;
+    font-weight: 400;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2.12rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+  }
+
+  h5 {
+    font-size: 1rem;
+  }
+
+  h6 {
+    font-size: 0.87rem;
+  }
 }
