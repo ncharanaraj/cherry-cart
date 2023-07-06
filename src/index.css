@@ -17,6 +17,7 @@
   --warning-color: #fef08a;
   --info-color: #a5f3fc;
   --error-color: #fecaca;
+  --dark-color: #262626;
 }
 
 html {
@@ -30,6 +31,7 @@ body {
 
 a {
   text-decoration: none;
+  color: var(--dark-color);
 }
 
 h1 {

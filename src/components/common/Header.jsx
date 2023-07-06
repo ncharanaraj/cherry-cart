@@ -1,6 +1,6 @@
 import React from "react";
 import "./header.css";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink, Link } from "react-router-dom";
 import {
   FavoriteBorderOutlinedIcon,
   PermIdentityOutlinedIcon,
@@ -33,15 +33,15 @@ const Header = () => {
           </button>
         </div>
         <nav>
-          <div onClick={() => navigate("/profile")}>
+          <NavLink to="/profile">
             <PermIdentityOutlinedIcon />
-          </div>
-          <div onClick={() => navigate("/wishlist")}>
+          </NavLink>
+          <NavLink to="/wishlist">
             <FavoriteBorderOutlinedIcon />
-          </div>
-          <div onClick={() => navigate("/cart")}>
+          </NavLink>
+          <NavLink to="/cart">
             <ShoppingCartOutlinedIcon />
-          </div>
+          </NavLink>
         </nav>
       </div>
     </header>

@@ -28,12 +28,13 @@ nav {
   gap: 1rem;
 }
 
-nav > div {
+nav {
   padding: 0.25rem;
   cursor: pointer;
 }
 
-nav > div:hover {
+nav > a:hover,
+.active {
   color: var(--primary-color);
 }
 
@@ -47,6 +48,10 @@ nav > div:hover {
 }
 
 .shop-now:hover {
+  background-color: var(--primary-color);
+}
+
+.shop-now:active {
   background-color: var(--primary-color);
 }
 
