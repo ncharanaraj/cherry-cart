@@ -4,31 +4,45 @@ import {
   SearchOutlinedIcon,
   StorefrontOutlinedIcon,
   LoginOutlinedIcon,
+  ShoppingCartOutlinedIcon,
+  FavoriteBorderOutlinedIcon,
 } from "../../assests/index";
-import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
     <>
       <div>
-        <span className="brand-name">Cherry Cart</span>
+        <NavLink to="/" className="brand-name">
+          <span>Cherry Cart</span>
+        </NavLink>
       </div>
       <div className="search">
         <SearchOutlinedIcon />
         <input type="text" placeholder="Search" />
       </div>
       <nav>
-        <Tooltip title="Store" arrow>
-          <IconButton>
-            <StorefrontOutlinedIcon sx={{ color: "var(--primary-color)" }} />
-          </IconButton>
-        </Tooltip>
-        <Tooltip title="Login" arrow>
-          <IconButton>
-            <LoginOutlinedIcon sx={{ color: "var(--primary-color)" }} />
-          </IconButton>
-        </Tooltip>
+        <NavLink to="/store">
+          <Tooltip title="Store" arrow>
+            <StorefrontOutlinedIcon className="nav-icons" />
+          </Tooltip>
+        </NavLink>
+        <NavLink to="/wishlist">
+          <Tooltip title="Wishlist" arrow>
+            <FavoriteBorderOutlinedIcon className="nav-icons" />
+          </Tooltip>
+        </NavLink>
+        <NavLink to="/cart">
+          <Tooltip title="Cart" arrow>
+            <ShoppingCartOutlinedIcon className="nav-icons" />
+          </Tooltip>
+        </NavLink>
+        <NavLink to="/login">
+          <Tooltip title="Login" arrow>
+            <LoginOutlinedIcon className="nav-icons" />
+          </Tooltip>
+        </NavLink>
       </nav>
     </>
   );

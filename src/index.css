@@ -42,6 +42,11 @@ h3 {
   letter-spacing: -0.03rem;
 }
 
+h4 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
 .subtitle {
   font-size: 1.5rem;
   font-weight: 500;
@@ -65,9 +70,23 @@ h3 {
   text-transform: uppercase;
 }
 
-.button {
-  font-size: 0.625rem;
+button {
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.01875rem;
   text-transform: uppercase;
+  background-color: var(--primary-color);
+  border-radius: 0.25rem;
+  border: 1px solid var(--primary-color);
+  color: var(--accent-color);
+  padding: 0.75rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
 }

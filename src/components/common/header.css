@@ -3,7 +3,7 @@
   font-weight: 900;
   color: var(--primary-color);
   text-shadow: 1px 1px 2px var(--accent-color);
-  text-align: center;
+  text-decoration: none;
 }
 
 .search {
@@ -28,7 +28,16 @@
 nav {
   display: flex;
   justify-content: flex-end;
-  gap: 0.5rem;
+  gap: 1rem;
   height: 100%;
   align-items: center;
+}
+
+nav > a {
+  color: var(--accent-color);
+  margin-block-start: 0.25rem;
+}
+
+nav > a.active {
+  color: var(--primary-color);
 }

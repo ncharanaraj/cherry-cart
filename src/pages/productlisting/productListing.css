@@ -1,0 +1,5 @@
+.product-listing-container {
+  display: grid;
+  grid-template-columns: 0.35fr 1fr;
+  padding: 0.5rem;
+}
