@@ -1,7 +1,6 @@
 import React from "react";
 import "./header.css";
 import {
-  SearchOutlinedIcon,
   StorefrontOutlinedIcon,
   LoginOutlinedIcon,
   ShoppingCartOutlinedIcon,
@@ -9,6 +8,7 @@ import {
 } from "../../assests/index";
 import Tooltip from "@mui/material/Tooltip";
 import { NavLink } from "react-router-dom";
+import Search from "./search/Search";
 
 const Header = () => {
   return (
@@ -18,10 +18,7 @@ const Header = () => {
           <span>Cherry Cart</span>
         </NavLink>
       </div>
-      <div className="search">
-        <SearchOutlinedIcon />
-        <input type="text" placeholder="Search" />
-      </div>
+      <Search />
       <nav>
         <NavLink to="/store">
           <Tooltip title="Store" arrow>

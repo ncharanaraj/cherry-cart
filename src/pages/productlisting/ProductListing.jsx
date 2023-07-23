@@ -1,27 +1,20 @@
-import React, { useEffect, useState } from "react";
-import ProductCard from "../../components/productcard/ProductCard";
+import { useContext } from "react";
 import "./productListing.css";
+import { ProductContext } from "../../contexts/ProductContext";
+import ProductCard from "../../components/productcard/ProductCard";
 
 const ProductListing = () => {
-  const [products, setProducts] = useState([]);
-
-  const fechData = () => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setProducts(json));
-  };
-
-  useEffect(() => {
-    fechData();
-  }, []);
+  const { products } = useContext(ProductContext);
 
   document.title = "Store | Cherry Cart";
 
   return (
     <div className="product-listing-container">
       <sidebar></sidebar>
-      <div>
-        <ProductCard products={products} />
+      <div className="product-cards">
+        {products.map((product) => (
+          <ProductCard products={product} />
+        ))}
       </div>
     </div>
   );
