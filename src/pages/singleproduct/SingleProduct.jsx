@@ -1,19 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useContext } from "react";
 import { GradeIcon } from "../../assests";
 import "./singleProduct.css";
+import { ProductContext } from "../../contexts/ProductContext";
 
 const SingleProduct = () => {
-  const [products, setProducts] = useState([]);
-  const { productId } = useParams();
+  const {
+    state: { productDetails },
+  } = useContext(ProductContext);
 
-  useEffect(() => {
-    fetch(`https://fakestoreapi.com/products/${productId}`)
-      .then((res) => res.json())
-      .then((json) => setProducts(json));
-  }, [productId]);
-
-  const { title, image, price, rating, category, description } = products;
+  const { title, image, price, rating, category, description } = productDetails;
 
   document.title = `${title} | Cherry Cart`;
 

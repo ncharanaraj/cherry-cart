@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { GradeIcon } from "../../assests";
 import { Link } from "react-router-dom";
 import "./productCard.css";
+import { ProductContext } from "../../contexts/ProductContext";
 
 const ProductCard = ({ products }) => {
+  const { fetchProductId } = useContext(ProductContext);
+
   const { id, image, title, rating, price } = products;
+
   return (
     <div key={id} className="product-card">
-      <Link to={`/product/${id}`}>
+      <Link to={`/products/${id}`}>
         <div className="product-image">
-          <img src={image} alt="" />
+          <img src={image} alt="" onClick={() => fetchProductId(id)} />
         </div>
       </Link>
       <div className="product-body">

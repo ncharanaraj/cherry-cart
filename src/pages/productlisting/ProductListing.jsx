@@ -4,7 +4,9 @@ import { ProductContext } from "../../contexts/ProductContext";
 import ProductCard from "../../components/productcard/ProductCard";
 
 const ProductListing = () => {
-  const { products } = useContext(ProductContext);
+  const {
+    state: { products },
+  } = useContext(ProductContext);
 
   document.title = "Store | Cherry Cart";
 
