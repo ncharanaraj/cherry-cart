@@ -2,6 +2,7 @@ import { useContext } from "react";
 import "./productListing.css";
 import { ProductContext } from "../../contexts/ProductContext";
 import ProductCard from "../../components/productcard/ProductCard";
+import ProductFilters from "../../components/filters/ProductFilters";
 
 const ProductListing = () => {
   const {
@@ -12,7 +13,9 @@ const ProductListing = () => {
 
   return (
     <div className="product-listing-container">
-      <sidebar></sidebar>
+      <sidebar>
+        <ProductFilters />
+      </sidebar>
       <div className="product-cards">
         {products.map((product) => (
           <ProductCard products={product} />

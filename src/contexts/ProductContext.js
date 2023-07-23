@@ -29,8 +29,16 @@ const ProductProvider = ({ children }) => {
     fetchProducts();
   }, []);
 
+  const filterSortByPrice = state.sortByPrice
+    ? state.products.sort((productOne, productTwo) =>
+        state.sortByPrice === "lowtohigh"
+          ? productOne.price - productTwo.price
+          : productTwo.price - productOne.price
+      )
+    : state.products;
+
   return (
-    <ProductContext.Provider value={{ state, fetchProductId }}>
+    <ProductContext.Provider value={{ state, dispatch, fetchProductId }}>
       {children}
     </ProductContext.Provider>
   );

@@ -1,6 +1,7 @@
 const intialState = {
   products: [],
   productDetails: {},
+  sortByPrice: "",
 };
 
 const ProductReducer = (state, { type, payload }) => {
@@ -14,6 +15,11 @@ const ProductReducer = (state, { type, payload }) => {
       return {
         ...state,
         productDetails: payload,
+      };
+    case "SORT_BY_PRICE":
+      return {
+        ...state,
+        sortByPrice: payload,
       };
     default:
       return state;

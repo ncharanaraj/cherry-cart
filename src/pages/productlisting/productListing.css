@@ -8,3 +8,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 }
+
+sidebar {
+  padding: 0.75rem 2rem;
+}
