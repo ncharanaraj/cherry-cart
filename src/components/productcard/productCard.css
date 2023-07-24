@@ -26,6 +26,12 @@
   gap: 0.5rem;
 }
 
+.product-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .product-body-item {
   display: flex;
   justify-content: space-between;

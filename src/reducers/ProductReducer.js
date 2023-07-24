@@ -47,6 +47,12 @@ const ProductReducer = (state, { type, payload }) => {
         ...state,
         ratingRange: payload,
       };
+    case "CLEAR_FILTERS":
+      return {
+        ...intialState,
+        products: payload.products,
+        allCategories: payload.categories,
+      };
     default:
       return state;
   }

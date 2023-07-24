@@ -18,7 +18,19 @@ const ProductFilters = () => {
           <h4>Filters</h4>
         </div>
         <div>
-          <button>CLEAR</button>
+          <button
+            onClick={() => {
+              dispatch({
+                type: "CLEAR_FILTERS",
+                payload: {
+                  products: state.products,
+                  categories: state.allCategories,
+                },
+              });
+            }}
+          >
+            CLEAR
+          </button>
         </div>
       </div>
       <div className="filter-wrapper">
@@ -62,30 +74,6 @@ const ProductFilters = () => {
       </div>
 
       <div className="filter-wrapper">
-        <p>Categories</p>
-        <div>
-          {productCategories.map((category, index) => (
-            <div className="filter-items">
-              <label key={index}>
-                <input
-                  type="checkbox"
-                  value={category}
-                  onChange={(event) =>
-                    dispatch({
-                      type: "CATEGORY",
-                      payload: event.target.value,
-                    })
-                  }
-                  checked={state.categories.includes(category)}
-                />
-                <span>{category}</span>
-              </label>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="filter-wrapper">
         <p>Rating</p>
         <div className="filter-items">
           <div className="filter-rating-stars">
@@ -117,6 +105,31 @@ const ProductFilters = () => {
             <option>4</option>
             <option>5</option>
           </datalist>
+        </div>
+      </div>
+
+      <div className="filter-wrapper">
+        <p>Categories</p>
+        <div>
+          {productCategories.map((category, id) => (
+            <div className="filter-items" key={id}>
+              <label>
+                <input
+                  type="checkbox"
+                  name="category"
+                  value={category}
+                  onChange={(event) =>
+                    dispatch({
+                      type: "CATEGORY",
+                      payload: event.target.value,
+                    })
+                  }
+                  checked={state.categories.includes(category)}
+                />
+                <span>{category}</span>
+              </label>
+            </div>
+          ))}
         </div>
       </div>
     </>

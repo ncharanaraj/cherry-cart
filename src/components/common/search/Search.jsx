@@ -14,6 +14,7 @@ const Search = () => {
       <input
         type="search"
         placeholder="Search"
+        name="search"
         value={state.search}
         onChange={(e) => {
           dispatch({
