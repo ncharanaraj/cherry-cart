@@ -5,21 +5,25 @@ import ProductCard from "../../components/productcard/ProductCard";
 import ProductFilters from "../../components/filters/ProductFilters";
 
 const ProductListing = () => {
-  const {
-    state: { products },
-  } = useContext(ProductContext);
+  const { filterByRating: filteredProducts } = useContext(ProductContext);
 
   document.title = "Store | Cherry Cart";
 
   return (
     <div className="product-listing-container">
-      <sidebar>
+      <div className="sidebar">
         <ProductFilters />
-      </sidebar>
-      <div className="product-cards">
-        {products.map((product) => (
-          <ProductCard products={product} />
-        ))}
+      </div>
+      <div>
+        {filteredProducts.length > 0 ? (
+          <div className="product-cards">
+            {filteredProducts.map((product) => (
+              <ProductCard key={product.id} products={product} />
+            ))}
+          </div>
+        ) : (
+          <p>Oops! We don't have any products that match your preference.</p>
+        )}
       </div>
     </div>
   );

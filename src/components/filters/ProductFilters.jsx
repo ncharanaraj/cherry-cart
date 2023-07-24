@@ -1,10 +1,16 @@
 import React, { useContext } from "react";
 import "./productFilters.css";
 import { ProductContext } from "../../contexts/ProductContext";
+import { GradeIcon } from "../../assests";
 
 const ProductFilters = () => {
   const { state, dispatch } = useContext(ProductContext);
-  console.log(state.sortByPrice);
+
+  const productCategories = state.products.reduce(
+    (acc, { category }) =>
+      acc.includes(category) ? [...acc] : [...acc, category],
+    []
+  );
   return (
     <>
       <div className="filter-heading">
@@ -15,7 +21,6 @@ const ProductFilters = () => {
           <button>CLEAR</button>
         </div>
       </div>
-
       <div className="filter-wrapper">
         <p>Sort By</p>
         <div className="filter-items">
@@ -35,6 +40,8 @@ const ProductFilters = () => {
             />
             <span>Price = Low to High</span>
           </label>
+        </div>
+        <div className="filter-items">
           <label htmlFor="hightolow">
             <input
               type="radio"
@@ -51,6 +58,65 @@ const ProductFilters = () => {
             />
             <span>Price = High to Low</span>
           </label>
+        </div>
+      </div>
+
+      <div className="filter-wrapper">
+        <p>Categories</p>
+        <div>
+          {productCategories.map((category, index) => (
+            <div className="filter-items">
+              <label key={index}>
+                <input
+                  type="checkbox"
+                  value={category}
+                  onChange={(event) =>
+                    dispatch({
+                      type: "CATEGORY",
+                      payload: event.target.value,
+                    })
+                  }
+                  checked={state.categories.includes(category)}
+                />
+                <span>{category}</span>
+              </label>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="filter-wrapper">
+        <p>Rating</p>
+        <div className="filter-items">
+          <div className="filter-rating-stars">
+            <span>
+              1 <GradeIcon sx={{ color: "var(--warning-color)" }} />
+            </span>
+            <span>
+              5 <GradeIcon sx={{ color: "var(--warning-color)" }} />
+            </span>
+          </div>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            step="1"
+            list="rating-list"
+            value={state.ratingRange}
+            onChange={(e) => {
+              dispatch({
+                type: "SORT_BY_RATING",
+                payload: e.target.value,
+              });
+            }}
+          />
+          <datalist id="rating-list">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </datalist>
         </div>
       </div>
     </>

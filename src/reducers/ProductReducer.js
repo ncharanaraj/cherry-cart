@@ -2,6 +2,10 @@ const intialState = {
   products: [],
   productDetails: {},
   sortByPrice: "",
+  categories: [],
+  search: "",
+  allCategories: [],
+  ratingRange: 5,
 };
 
 const ProductReducer = (state, { type, payload }) => {
@@ -20,6 +24,28 @@ const ProductReducer = (state, { type, payload }) => {
       return {
         ...state,
         sortByPrice: payload,
+      };
+    case "DISPLAY_CATEGORY":
+      return {
+        ...state,
+        allCategories: payload,
+      };
+    case "CATEGORY":
+      return {
+        ...state,
+        categories: state.categories.includes(payload)
+          ? state.categories.filter((categoryType) => categoryType !== payload)
+          : [...state.categories, payload],
+      };
+    case "SEARCH":
+      return {
+        ...state,
+        search: payload,
+      };
+    case "SORT_BY_RATING":
+      return {
+        ...state,
+        ratingRange: payload,
       };
     default:
       return state;

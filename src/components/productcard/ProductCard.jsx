@@ -10,7 +10,7 @@ const ProductCard = ({ products }) => {
   const { id, image, title, rating, price } = products;
 
   return (
-    <div key={id} className="product-card">
+    <div className="product-card">
       <Link to={`/products/${id}`}>
         <div className="product-image">
           <img src={image} alt="" onClick={() => fetchProductId(id)} />

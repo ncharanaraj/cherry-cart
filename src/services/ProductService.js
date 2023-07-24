@@ -6,4 +6,7 @@ const getProducts = async () =>
 const getProductId = async (productId) =>
   await axios.get(`https://fakestoreapi.com/products/${productId}`);
 
-export { getProducts, getProductId };
+const getProductCategories = async () =>
+  await axios.get("https://fakestoreapi.com/products/categories");
+
+export { getProducts, getProductId, getProductCategories };
