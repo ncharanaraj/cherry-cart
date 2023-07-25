@@ -22,7 +22,7 @@ const HeroSlider = () => {
   return (
     <div>
       <Link to="/store">
-        <img src={sliderImages[selectedSlide]} alt="" srcset="" />
+        <img src={sliderImages[selectedSlide]} alt="" />
       </Link>
     </div>
   );
