@@ -43,6 +43,10 @@ const ProductProvider = ({ children }) => {
     fetchProductCategories();
   }, []);
 
+  // const cardBtnsHandler = (delay, callback, ...args) => {
+  //   clearTimeout()
+  // }
+
   const filterBySearch = state.search
     ? state.products.filter(({ title }) =>
         title.toLowerCase().includes(state.search.toLowerCase())

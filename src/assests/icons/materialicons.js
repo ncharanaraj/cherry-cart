@@ -3,6 +3,7 @@ import StorefrontOutlinedIcon from "@mui/icons-material/StorefrontOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import GradeIcon from "@mui/icons-material/Grade";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -17,6 +18,7 @@ export {
   ShoppingCartOutlinedIcon,
   LoginOutlinedIcon,
   FavoriteBorderOutlinedIcon,
+  FavoriteOutlinedIcon,
   GradeIcon,
   GitHubIcon,
   TwitterIcon,

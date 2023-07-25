@@ -1,9 +1,9 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 import {
   initialWishlistState,
   wishlistReducer,
 } from "../reducers/WishlistReducer";
-import { getWishlistService } from "../services/WishListService";
+import { getProducts } from "../services/ProductService";
 
 const WishListContext = createContext();
 
@@ -15,19 +15,28 @@ const WishListProvider = ({ children }) => {
 
   const getWishlist = async () => {
     try {
-      const response = await getWishlistService();
-      wishlistDispatch({ type: "DISPLAY_WISHLIST", payload: response.data });
+      const response = await getProducts();
+      wishlistDispatch({ type: "DISPLAY_PRODUCTS", payload: response.data });
     } catch (error) {
-      console.error("Error fetching wishlist:", error);
+      console.error("Error fetching products:", error);
     }
   };
+
+  const productsInWishlist = (productId) =>
+    wishlistState.wishlist.find((product) => product.id === productId);
 
   useEffect(() => {
     getWishlist();
   }, []);
 
   return (
-    <WishListContext.Provider value={{ wishlistState }}>
+    <WishListContext.Provider
+      value={{
+        wishlistState,
+        wishlistDispatch,
+        productsInWishlist,
+      }}
+    >
       {children}
     </WishListContext.Provider>
   );

@@ -4,6 +4,7 @@ export {
   ShoppingCartOutlinedIcon,
   LoginOutlinedIcon,
   FavoriteBorderOutlinedIcon,
+  FavoriteOutlinedIcon,
   GradeIcon,
   GitHubIcon,
   TwitterIcon,

@@ -8,6 +8,7 @@ const WishList = () => {
   const {
     wishlistState: { wishlist },
   } = useContext(WishListContext);
+
   document.title = "Wishlist | Cherry Cart";
 
   return (

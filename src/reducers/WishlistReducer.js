@@ -1,22 +1,25 @@
 const initialWishlistState = {
+  products: [],
   wishlist: [],
 };
 
 const wishlistReducer = (state, { type, payload }) => {
   switch (type) {
-    case "DISPLAY_WISHLIST":
+    case "DISPLAY_PRODUCTS":
       return {
         ...state,
-        wishlist: payload,
+        products: payload,
       };
     case "ADD_TO_WISHLIST":
-      const uniqueWishlist = payload.reduce(
-        (acc, curr) => (acc.includes(curr) ? acc : [...acc, curr]),
-        []
-      );
       return {
         ...state,
-        wishlist: [uniqueWishlist],
+        wishlist: [...state.wishlist, payload],
+      };
+
+    case "REMOVE_FROM_WISHLIST":
+      return {
+        ...state,
+        wishlist: state.wishlist.filter(({ id }) => id !== payload),
       };
     default:
       return state;

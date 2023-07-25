@@ -19,6 +19,16 @@
   padding: 0.25rem;
 }
 
+.product-card-fav-icon {
+  position: absolute;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.product-card-fav-icon :hover {
+  color: var(--primary-color);
+}
+
 .product-body {
   display: flex;
   flex-direction: column;
