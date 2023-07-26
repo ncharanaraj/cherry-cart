@@ -11,11 +11,16 @@ import { NavLink } from "react-router-dom";
 import Search from "./search/Search";
 import { Badge } from "@mui/material";
 import { WishListContext } from "../../contexts/WishListContext";
+import { CartContext } from "../../contexts/CartContext";
 
 const Header = () => {
   const {
     wishlistState: { wishlist },
   } = useContext(WishListContext);
+
+  const {
+    cartState: { cart },
+  } = useContext(CartContext);
 
   return (
     <>
@@ -46,10 +51,12 @@ const Header = () => {
         </NavLink>
         <NavLink to="/cart">
           <Tooltip title="Cart" arrow>
-            <ShoppingCartOutlinedIcon
-              color="var(--primary-color)"
-              // className="nav-icons"
-            />
+            <Badge badgeContent={cart.length} color="error">
+              <ShoppingCartOutlinedIcon
+                color="var(--primary-color)"
+                // className="nav-icons"
+              />
+            </Badge>
           </Tooltip>
         </NavLink>
         <NavLink to="/login">
