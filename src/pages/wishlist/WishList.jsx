@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./wishlist.css";
-import { WishListContext } from "../../contexts/WishListContext";
+import { useWishlist } from "../../contexts/WishListContext";
 import ProductCard from "../../components/productcard/ProductCard";
 
 const WishList = () => {
   const {
     wishlistState: { wishlist },
-  } = useContext(WishListContext);
+  } = useWishlist();
 
   document.title = "Wishlist | Cherry Cart";
 

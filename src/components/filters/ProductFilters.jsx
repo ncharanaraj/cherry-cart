@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./productFilters.css";
-import { ProductContext } from "../../contexts/ProductContext";
+import { useProduct } from "../../contexts/ProductContext";
 import { GradeIcon } from "../../assests";
 
 const ProductFilters = () => {
-  const { state, dispatch } = useContext(ProductContext);
+  const { state, dispatch } = useProduct();
 
   const productCategories = state.products.reduce(
     (acc, { category }) =>

@@ -1,15 +1,28 @@
 import React from "react";
 import "./cartCard.css";
+import { useCart } from "../../contexts/CartContext";
+import { useWishlist } from "../../contexts/WishListContext";
 
 const CartCard = ({ cartProducts }) => {
-  const { image, title, price } = cartProducts;
+  const { handleRemoveFromCart } = useCart();
+  const { handleAddToWishlist } = useWishlist();
+  const { id, image, title, price } = cartProducts;
   return (
-    <div>
-      <div>
-        <img src={image} alt="" style={{ width: "15rem" }} />
+    <div className="cart-card">
+      <img className="cart-card-image" src={image} alt={title} />
+      <div className="cart-card-details">
+        <h3>{title}</h3>
+        <p>Price: ₹{price}</p>
         <div>
-          <p>{title}</p>
-          <p>{price}</p>
+          <button onClick={() => handleAddToWishlist(cartProducts)}>
+            ADD TO WISHLIST
+          </button>
+          <button
+            className="remove-from-cart-btn"
+            onClick={() => handleRemoveFromCart(id)}
+          >
+            REMOVE FROM CART
+          </button>
         </div>
       </div>
     </div>

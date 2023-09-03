@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import "./categories.css";
-import { ProductContext } from "../../contexts/ProductContext";
+import { useProduct } from "../../contexts/ProductContext";
 import { useNavigate } from "react-router-dom";
 
 const Categories = () => {
   const navigate = useNavigate();
-  const { state, dispatch } = useContext(ProductContext);
+  const { state, dispatch } = useProduct();
 
   useEffect(() => {
     dispatch({

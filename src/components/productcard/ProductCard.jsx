@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
   FavoriteBorderOutlinedIcon,
   FavoriteOutlinedIcon,
@@ -6,22 +6,17 @@ import {
 } from "../../assests";
 import { Link } from "react-router-dom";
 import "./productCard.css";
-import { ProductContext } from "../../contexts/ProductContext";
-import { WishListContext } from "../../contexts/WishListContext";
+import { useProduct } from "../../contexts/ProductContext";
+import { useWishlist } from "../../contexts/WishListContext";
+import { useCart } from "../../contexts/CartContext";
 
 const ProductCard = ({ products }) => {
-  const { fetchProductId } = useContext(ProductContext);
-  const { wishlistDispatch, productsInWishlist } = useContext(WishListContext);
+  const { fetchProductId } = useProduct();
+  const { handleAddToWishlist, handleRemoveFromWishlist, productsInWishlist } =
+    useWishlist();
+  const { handleAddToCart, handleRemoveFromCart, isItemInCart } = useCart();
 
   const { id, image, title, rating, price } = products;
-
-  const handleAddToWishlist = () => {
-    wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: products });
-  };
-
-  const handleRemoveFromWishlist = () => {
-    wishlistDispatch({ type: "REMOVE_FROM_WISHLIST", payload: id });
-  };
 
   return (
     <div className="product-card">
@@ -33,11 +28,13 @@ const ProductCard = ({ products }) => {
       <div className="product-card-fav-icon">
         {productsInWishlist(id) ? (
           <FavoriteOutlinedIcon
-            onClick={handleRemoveFromWishlist}
+            onClick={() => handleRemoveFromWishlist(id)}
             color="error"
           />
         ) : (
-          <FavoriteBorderOutlinedIcon onClick={handleAddToWishlist} />
+          <FavoriteBorderOutlinedIcon
+            onClick={() => handleAddToWishlist(products)}
+          />
         )}
       </div>
       <div className="product-body">
@@ -49,7 +46,21 @@ const ProductCard = ({ products }) => {
             <span>{rating?.rate}</span>
           </div>
         </div>
-        <button className="add-to-cart-btn">Add TO CART</button>
+        {isItemInCart(id) ? (
+          <button
+            className="remove-from-cart-btn"
+            onClick={() => handleRemoveFromCart(id)}
+          >
+            REMOVE FROM CART
+          </button>
+        ) : (
+          <button
+            className="add-to-cart-btn"
+            onClick={() => handleAddToCart(products)}
+          >
+            Add TO CART
+          </button>
+        )}
       </div>
     </div>
   );

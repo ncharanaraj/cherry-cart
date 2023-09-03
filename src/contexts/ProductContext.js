@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useReducer } from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { ProductReducer, intialState } from "../reducers/ProductReducer";
 import {
   getProductId,
@@ -41,11 +41,8 @@ const ProductProvider = ({ children }) => {
   useEffect(() => {
     fetchProducts();
     fetchProductCategories();
+    fetchProductId();
   }, []);
-
-  // const cardBtnsHandler = (delay, callback, ...args) => {
-  //   clearTimeout()
-  // }
 
   const filterBySearch = state.search
     ? state.products.filter(({ title }) =>
@@ -86,6 +83,6 @@ const ProductProvider = ({ children }) => {
   );
 };
 
-export default ProductProvider;
+const useProduct = () => useContext(ProductContext);
 
-export { ProductContext, ProductProvider };
+export { useProduct, ProductProvider };

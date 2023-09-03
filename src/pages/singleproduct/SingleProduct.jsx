@@ -1,16 +1,39 @@
-import React, { useContext } from "react";
+import React from "react";
 import { GradeIcon } from "../../assests";
 import "./singleProduct.css";
-import { ProductContext } from "../../contexts/ProductContext";
+import { useProduct } from "../../contexts/ProductContext";
+import { useCart } from "../../contexts/CartContext";
+import { useWishlist } from "../../contexts/WishListContext";
 
 const SingleProduct = () => {
   const {
     state: { productDetails },
-  } = useContext(ProductContext);
+  } = useProduct();
 
-  const { title, image, price, rating, category, description } = productDetails;
+  const { handleAddToCart, isItemInCart } = useCart();
+
+  const { handleAddToWishlist, productsInWishlist } = useWishlist();
+
+  const { id, title, image, price, rating, category, description } =
+    productDetails;
 
   document.title = `${title} | Cherry Cart`;
+
+  const handleCartAction = () => {
+    if (productDetails) {
+      if (!isItemInCart(id)) {
+        handleAddToCart(productDetails);
+      }
+    }
+  };
+
+  const handleWishlistAction = () => {
+    if (productDetails) {
+      if (!productsInWishlist(id)) {
+        handleAddToWishlist(productDetails);
+      }
+    }
+  };
 
   return (
     <div className="single-product-container">
@@ -34,8 +57,18 @@ const SingleProduct = () => {
         <p>{description}</p>
         <hr />
         <div className="single-product-body-btns">
-          <button>ADD TO CART</button>
-          <button className="wishlist-btn">ADD TO WISHLIST</button>
+          {isItemInCart(id) ? (
+            <button>IN CART</button>
+          ) : (
+            <button onClick={handleCartAction}>ADD TO CART</button>
+          )}
+          {productsInWishlist(id) ? (
+            <button>IN WISHLIST</button>
+          ) : (
+            <button className="wishlist-btn" onClick={handleWishlistAction}>
+              ADD TO WISHLIST
+            </button>
+          )}
         </div>
       </div>
     </div>

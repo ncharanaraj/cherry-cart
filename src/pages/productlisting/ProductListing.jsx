@@ -1,11 +1,10 @@
-import { useContext } from "react";
 import "./productListing.css";
-import { ProductContext } from "../../contexts/ProductContext";
+import { useProduct } from "../../contexts/ProductContext";
 import ProductCard from "../../components/productcard/ProductCard";
 import ProductFilters from "../../components/filters/ProductFilters";
 
 const ProductListing = () => {
-  const { filterByRating: filteredProducts } = useContext(ProductContext);
+  const { filterByRating: filteredProducts } = useProduct();
 
   document.title = "Store | Cherry Cart";
 

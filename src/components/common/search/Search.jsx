@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./search.css";
 import { SearchOutlinedIcon } from "../../../assests/index";
 import { useNavigate } from "react-router-dom";
-import { ProductContext } from "../../../contexts/ProductContext";
+import { useProduct } from "../../../contexts/ProductContext";
 
 const Search = () => {
   const navigate = useNavigate();
-  const { state, dispatch } = useContext(ProductContext);
+  const { state, dispatch } = useProduct();
 
   return (
     <div className="search">

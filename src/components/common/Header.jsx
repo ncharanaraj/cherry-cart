@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./header.css";
 import {
   StorefrontOutlinedIcon,
@@ -10,17 +10,17 @@ import Tooltip from "@mui/material/Tooltip";
 import { NavLink } from "react-router-dom";
 import Search from "./search/Search";
 import { Badge } from "@mui/material";
-import { WishListContext } from "../../contexts/WishListContext";
-import { CartContext } from "../../contexts/CartContext";
+import { useWishlist } from "../../contexts/WishListContext";
+import { useCart } from "../../contexts/CartContext";
 
 const Header = () => {
   const {
     wishlistState: { wishlist },
-  } = useContext(WishListContext);
+  } = useWishlist();
 
   const {
     cartState: { cart },
-  } = useContext(CartContext);
+  } = useCart();
 
   return (
     <>
